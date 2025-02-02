@@ -26,6 +26,7 @@
             overflow: hidden;
             position: relative;
             transition: background-color 1s ease-in-out; /* Transición suave de fondo */
+            font-size: 2vw; /* Tamaño de fuente adaptado al tamaño de la ventana */
         }
         .background {
             position: absolute;
@@ -43,17 +44,17 @@
             z-index: 1;
         }
         .greetings {
-            font-size: 6rem;
+            font-size: 7vw; /* Ajustar tamaño con respecto al tamaño de la ventana */
             font-weight: 900;
             color: #ff4081;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 4vh; /* Aumento de margen inferior */
         }
         .description {
-            font-size: 1.8rem;
+            font-size: 2rem;
             text-align: center;
             color: #e0e0e0;
-            margin-bottom: 40px;
+            margin-bottom: 6vh; /* Aumento de margen inferior */
         }
         .button-container {
             display: flex;
@@ -66,15 +67,15 @@
         }
         .botones {
             background-color: #FFD700; /* Amarillo más fuerte pero no dorado */
-            padding: 10px 20px;
+            padding: 2vh 5vw;
             border-radius: 50px;
             text-decoration: none;
             color: white; /* Letras blancas */
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             display: inline-block;
             transition: all 0.3s ease-in-out;
             border: none; /* Eliminar bordes innecesarios */
-            margin: 0 15px; /* Mantener separación entre botones */
+            margin: 0 3vw; /* Aumento de margen entre botones */
         }
         .botones a {
             color: white;
@@ -83,14 +84,18 @@
         .final-message {
             display: none;
             text-align: center;
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: #e0e0e0;
             max-width: 80%;
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            padding: 2vw; /* Agregué un padding para evitar que el texto toque los bordes */
+            overflow-y: auto; /* Permitir desplazamiento si el contenido es largo */
+            max-height: 80vh; /* Limitar la altura para que el texto no ocupe toda la pantalla */
         }
+
         #audioPlayer {
             display: none;
         }
@@ -104,6 +109,39 @@
             width: 100%;
             height: 100%;
             z-index: 0;
+        }
+
+        /* Responsive adjustments */
+        @media screen and (max-width: 768px) {
+            .greetings {
+                font-size: 8vw; /* Más grande en pantallas pequeñas */
+            }
+            .description {
+                font-size: 2.5rem; /* Ajuste más grande en pantallas pequeñas */
+            }
+            .botones {
+                padding: 4vh 10vw;
+                font-size: 1.8rem;
+            }
+            .final-message {
+                font-size: 2.2rem; /* Tamaño adecuado para móviles */
+                max-height: 60vh; /* Limitar la altura en móviles */
+            }
+        }
+
+        /* Estilizar la barra de desplazamiento */
+        ::-webkit-scrollbar {
+            width: 8px; /* Ancho de la barra */
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent; /* Fondo transparente */
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.5); /* Barra de desplazamiento más sutil */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.8); /* Barra más visible al pasar el mouse */
         }
     </style>
 </head>
@@ -174,10 +212,8 @@
                 // Mostrar la animación
                 animacion.style.display = 'block';
                 animacion.innerHTML = `<iframe src="FLORES.html" width="100%" height="100%" style="border:none;"></iframe>`;
-                
-                // Reproducir música
-                audioPlayer.play();
-            }, 1000); // Retardo de 1 segundo para que la transición sea visible
+                audioPlayer.play(); // Reproducir la canción
+            }, 1000); // Después de la transición del fondo
         });
     </script>
 </body>
